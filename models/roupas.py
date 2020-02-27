@@ -15,7 +15,7 @@ class RoupasModel(banco.Model):
         self.preco = preco
 
     def json(self):
-        return {
+        return {-
             'roupa_id': self.roupa_id,
             'nome': self.nome,
             'cor': self.cor,

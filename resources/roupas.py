@@ -27,7 +27,7 @@ class Roupas(Resource):
 
 class Roupa(Resource):
     argumentos = reqparse.RequestParser()
-    argumentos.add_argument('roupa_id')
+    #argumentos.add_argument('roupa_id')
     argumentos.add_argument('nome')
     argumentos.add_argument('cor')
     argumentos.add_argument('preco')
@@ -51,10 +51,10 @@ class Roupa(Resource):
     def put(self, roupa_id):
         dados = Roupa.argumentos.parse_args()
         nova_roupa = {'roupa_id': roupa_id, **dados}
-        roupa = Roupa.find_roupa(roupa_id)
+        roupa = RoupasModel.find_roupa(roupa_id)
         if roupa:
             roupa.update(nova_roupa)
-            return nova_roupa, 200
+            return nova_roupa.json(),201
         roupas.append(nova_roupa)
         return nova_roupa, 201 #created/criado
 
